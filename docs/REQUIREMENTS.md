@@ -1,5 +1,7 @@
 # Bootstrap Restyling Requirements
 
+> **Draft status:** The decisions in Section 7 are awaiting team input coordinated by the PM. The PM will confirm the final decisions after consulting the relevant roles.
+
 ## 1. Purpose
 This document defines the content and display requirements for the team page, confirms the permitted scope of the login-page restyling, and documents expected edge-case behaviour.
 
@@ -45,12 +47,12 @@ This document defines the content and display requirements for the team page, co
 | Member name | Yes | Must not be empty; trim leading and trailing spaces; use the member's preferred full name. | Display prominently on the member card; wrap long names. | Display "Name unavailable" during development and correct before release. |
 | Photo | Yes | Use a valid local image path or approved URL; accepted formats are JPG, PNG, and WebP; meaningful alt text is required. | Use a consistent size and aspect ratio; crop without stretching. | Display the approved placeholder image if missing or broken. |
 | Role | Yes | Must match the role agreed by the team; multiple roles are permitted. | Display near or below the member's name; wrap long role titles. | Display "Role unavailable" during development and correct before release. |
-| Blurb | Yes | Plain text; one or two sentences; final maximum length pending confirmation. | Wrap within the card; maintain consistent spacing; do not overlap adjacent content. | Display "Blurb unavailable" during development and correct before release. |
+| Blurb | Yes | Plain text; one or two sentences; final maximum length pending confirmation under D-03. | Wrap within the card; maintain consistent spacing; do not overlap adjacent content. | Display "Blurb unavailable" during development and correct before release. |
 
 ### 3.4 Content Source and Edit Permissions
-- **Content source:** Pending confirmation under Q-01.
-- **Who may edit team information:** Pending confirmation under Q-01.
-- **How updates are published:** Pending confirmation under Q-01.
+- **Content source:** Pending confirmation under D-01.
+- **Who may edit team information:** Pending confirmation under D-01.
+- **How updates are published:** Pending confirmation under D-01.
 
 ## 4. Login Styling Scope
 ### 4.1 Permitted Changes
@@ -86,8 +88,8 @@ The following behaviour must remain unchanged:
 | Photo fails to load | Replace it with the approved placeholder image. |
 | Photos have different dimensions | Crop them consistently without stretching. |
 | Member name is unusually long | Wrap the name and keep it within the member card. |
-| Role title is unusually long | Wrap the role without overlapping other content |
-| Blurb exceeds the proposed length | Wrap the text without breaking the layout; the final publication limit is pending under Q-03. |
+| Role title is unusually long | Wrap the role without overlapping other content. |
+| Blurb exceeds the proposed length | Wrap the text without breaking the layout; the final publication limit is pending under D-03. |
 | Content includes special characters | Display the characters correctly without corrupting the layout. |
 | User submits invalid login details | Preserve the boilerplate's existing validation and error behaviour; remain on the login page and do not redirect to the team page. |
 | Unauthenticated user accesses the team page | Redirect the user to the login page and do not display the team-page content. |
@@ -110,7 +112,7 @@ The following behaviour must remain unchanged:
 
 **Given** an authenticated user has accessed the team page,  
 **When** the team page finishes loading,  
-**Then** the approved team name and every team member's name, photo or approved placeholder, role, and blurb are displayed.
+**Then** the approved team name and every team member's name, photo or approved placeholder image, role, and blurb are displayed.
 
 ### AC-04: Missing member photo
 
@@ -148,8 +150,6 @@ The following behaviour must remain unchanged:
 **When** their information is displayed on the team page,  
 **Then** the blurb remains within its allocated section without overlapping other content.
 
-> The final publication limit for blurbs remains pending under Q-03.
-
 ### AC-10: Unauthenticated access
 
 **Given** the user is not authenticated,  
@@ -168,10 +168,19 @@ The following behaviour must remain unchanged:
 **When** their information is displayed on the team page,  
 **Then** the characters display correctly without corrupting the content or page layout.
 
-## 7. Assumptions, Open Questions, and Decisions
+## 7. Open Decisions
 
-| ID | Item | Type | Owner | Status/Decision |
-| --- | --- | --- | --- | --- |
-| Q-01 | Is the team page static/read-only or editable by authenticated members? | Open Question | Supervisor | Pending |
-| Q-02 | Is responsive support required and, if so, which desktop and mobile screen sizes or breakpoints must be supported? | Open Question | Supervisor | Pending |
-| Q-03 | What is the final blurb length limit? |  Open Question | Supervisor/PM/UX | Pending |
+### Clarification Context
+
+On 06/08/2026, the supervisor confirmed that the assignment does not prescribe the strict requirements for D-01, D-02, and D-03. These decisions may therefore be determined internally by the team. The BA has provided recommendations, the PM will coordinate input from the relevant roles, and the PM will confirm the final outcomes. The BA will then update the affected requirements and record the outcome in Section 8.
+
+| ID | Decision required | BA recommendation | Consulted roles | Decision owner | Status |
+|---|---|---|---|---|---|
+| D-01 | Should the team page be static/read-only or editable? | Implement a static, read-only page because profile editing would add forms, storage, permissions and testing beyond the stated sprint scope. | UX, Dev 1 and Dev 2 | PM | Awaiting review |
+| D-02 | Should the team page support desktop and mobile layouts? | Require desktop support only. Mobile-specific design, implementation, and testing are not included because they are not explicitly required and would expand the mock-sprint scope. | UX, Dev 1 and Dev 2 | PM | Awaiting review |
+| D-03 | What should the maximum blurb length be? | Limit blurbs to 200 characters to maintain consistent member-card layouts. | UX | PM | Awaiting review |
+
+## 8. Decision Log
+
+| ID | Final decision | Rationale | Approved by | Date |
+|---|---|---|---|---|
