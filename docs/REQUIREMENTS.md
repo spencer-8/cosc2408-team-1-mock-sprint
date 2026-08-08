@@ -1,6 +1,6 @@
 # Bootstrap Restyling Requirements
 
-> **Draft status:** The decisions in Section 7 are awaiting team input coordinated by the PM. The PM will confirm the final decisions after consulting the relevant roles.
+> **Status:** D-01, D-02, and D-03 have been approved and incorporated into these requirements. The requirements are ready for implementation.
 
 ## 1. Purpose
 This document defines the content and display requirements for the team page, confirms the permitted scope of the login-page restyling, and documents expected edge-case behaviour.
@@ -10,8 +10,10 @@ This document defines the content and display requirements for the team page, co
 - Restyle the existing login page without changing its validation, error handling, authentication state, or session behaviour.
 - Reuse the boilerplate's existing authentication and session functionality.
 - Direct a successfully authenticated user to the team page.
-- Display the team name and the required information for each team member.
+- Display the team name and the required information for each team member on a static, read-only team page.
 - Handle missing images and unusually long text without breaking the layout.
+- Support the team page and login page on desktop layouts.
+
 ### 2.2 Out of Scope
 - Changes to Firebase authentication logic.
 - Changes to login validation, error handling, authentication state, or session behaviour.
@@ -20,7 +22,8 @@ This document defines the content and display requirements for the team page, co
 - Modifications to the existing notes functionality or routes; they must remain unchanged.
 - Individual profile pages, search, filtering, messaging or administration features.
 - Any functionality not listed in the approved requirements or Planner tasks.
-
+- Team member editing, profile-management forms, or storage for user-submitted profile changes.
+- Mobile-specific or tablet-specific layouts, breakpoints, and testing.
 
 ## 3. Team Page Requirements
 ### 3.1 Page-Level Requirements
@@ -47,12 +50,12 @@ This document defines the content and display requirements for the team page, co
 | Member name | Yes | Must not be empty; trim leading and trailing spaces; use the member's preferred full name. | Display prominently on the member card; wrap long names. | Display "Name unavailable" during development and correct before release. |
 | Photo | Yes | Use a valid local image path or approved URL; accepted formats are JPG, PNG, and WebP; meaningful alt text is required. | Use a consistent size and aspect ratio; crop without stretching. | Display the approved placeholder image if missing or broken. |
 | Role | Yes | Must match the role agreed by the team; multiple roles are permitted. | Display near or below the member's name; wrap long role titles. | Display "Role unavailable" during development and correct before release. |
-| Blurb | Yes | Plain text; one or two sentences; final maximum length pending confirmation under D-03. | Wrap within the card; maintain consistent spacing; do not overlap adjacent content. | Display "Blurb unavailable" during development and correct before release. |
+| Blurb | Yes | Plain text; one or two sentences; maximum 200 characters, including spaces. | Wrap within the card; maintain consistent spacing; do not overlap adjacent content. | Display "Blurb unavailable" during development and correct before release. |
 
 ### 3.4 Content Source and Edit Permissions
-- **Content source:** Pending confirmation under D-01.
-- **Who may edit team information:** Pending confirmation under D-01.
-- **How updates are published:** Pending confirmation under D-01.
+- **Content source:** Team-approved member information and images stored as static application data and assets.
+- **Who may edit team information:** The page does not provide editing controls. Changes must be made by the project team through the source code.
+- **How updates are published:** Updates follow the team’s normal source-control, review, and deployment process.
 
 ## 4. Login Styling Scope
 ### 4.1 Permitted Changes
@@ -89,7 +92,7 @@ The following behaviour must remain unchanged:
 | Photos have different dimensions | Crop them consistently without stretching. |
 | Member name is unusually long | Wrap the name and keep it within the member card. |
 | Role title is unusually long | Wrap the role without overlapping other content. |
-| Blurb exceeds the proposed length | Wrap the text without breaking the layout; the final publication limit is pending under D-03. |
+| Blurb exceeds 200 characters | Flag the blurb for correction and shorten it before release. Text must not break the layout during development. |
 | Content includes special characters | Display the characters correctly without corrupting the layout. |
 | User submits invalid login details | Preserve the boilerplate's existing validation and error behaviour; remain on the login page and do not redirect to the team page. |
 | Unauthenticated user accesses the team page | Redirect the user to the login page and do not display the team-page content. |
@@ -146,9 +149,9 @@ The following behaviour must remain unchanged:
 
 ### AC-09: Long blurb
 
-**Given** a team member has a blurb that approaches or exceeds the proposed length,  
+**Given** a team member has a blurb of up to 200 characters,  
 **When** their information is displayed on the team page,  
-**Then** the blurb remains within its allocated section without overlapping other content.
+**Then** the complete blurb wraps within its allocated section without overlapping other content.
 
 ### AC-10: Unauthenticated access
 
@@ -168,19 +171,23 @@ The following behaviour must remain unchanged:
 **When** their information is displayed on the team page,  
 **Then** the characters display correctly without corrupting the content or page layout.
 
-## 7. Open Decisions
+### AC-13: Read-only team page
 
-### Clarification Context
+**Given** an authenticated user is viewing the team page,  
+**When** they interact with the page,  
+**Then** no controls are provided to add, edit, or delete team-member information.
 
-On 06/08/2026, the supervisor confirmed that the assignment does not prescribe the strict requirements for D-01, D-02, and D-03. These decisions may therefore be determined internally by the team. The BA has provided recommendations, the PM will coordinate input from the relevant roles, and the PM will confirm the final outcomes. The BA will then update the affected requirements and record the outcome in Section 8.
+### AC-14: Desktop Layout
 
-| ID | Decision required | BA recommendation | Consulted roles | Decision owner | Status |
-|---|---|---|---|---|---|
-| D-01 | Should the team page be static/read-only or editable? | Implement a static, read-only page because profile editing would add forms, storage, permissions and testing beyond the stated sprint scope. | UX, Dev 1 and Dev 2 | PM | Awaiting review |
-| D-02 | Should the team page support desktop and mobile layouts? | Require desktop support only. Mobile-specific design, implementation, and testing are not included because they are not explicitly required and would expand the mock-sprint scope. | UX, Dev 1 and Dev 2 | PM | Awaiting review |
-| D-03 | What should the maximum blurb length be? | Limit blurbs to 200 characters to maintain consistent member-card layouts. | UX | PM | Awaiting review |
+**Given** an authenticated user accesses the application from a supported desktop viewport,  
+**When** the login page or team page is displayed,  
+**Then** its content remains readable and does not overlap or produce unintended horizontal overflow.
 
-## 8. Decision Log
 
-| ID | Final decision | Rationale | Approved by | Date |
-|---|---|---|---|---|
+## 7. Approved Decisions
+
+| ID | Decision required | Final Decision | Consulted roles | Decision owner | Status | Date |
+|---|---|---|---|---|---|---|
+| D-01 | Should the team page be static/read-only or editable? | Implement a static, read-only page because profile editing would add forms, storage, permissions and testing beyond the stated sprint scope. | UX, Dev 1 and Dev 2 | PM | Approved | 08/08/2026 |
+| D-02 | Should the team page support desktop and mobile layouts? | Require desktop support only. Mobile-specific design, implementation, and testing are not included because they are not explicitly required and would expand the mock-sprint scope. | UX, Dev 1 and Dev 2 | PM | Approved | 08/08/2026 |
+| D-03 | What should the maximum blurb length be? | Limit blurbs to 200 characters to maintain consistent member-card layouts. | UX | PM | Approved | 08/08/2026 |
