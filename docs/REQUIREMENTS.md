@@ -1,6 +1,8 @@
 # Bootstrap Restyling Requirements
 
-> **Status:** D-01, D-02, and D-03 have been approved and incorporated into these requirements. The requirements are ready for implementation.
+> **Status:**  D-01, D-02 and D-03 and the UX design have been approved. The feature is ready for implementation using representative placeholder content. Final team-member photos and blurbs remain pending and must be supplied before release under the Teams channel post.
+
+Approved Design: https://www.figma.com/design/FFBsLUGx9XwXSYFECUu7zH/Microsoft-Fluent-2-Web--Community-?node-id=11047-8&p=f
 
 ## 1. Purpose
 This document defines the content and display requirements for the team page, confirms the permitted scope of the login-page restyling, and documents expected edge-case behaviour.
