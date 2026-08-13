@@ -19,7 +19,7 @@ Checklist:
 
 Evidence:
 
-- Signed-in user shown in the app bar: `mrhhxs@gmail.com`.
+- Signed-in user shown in the app bar with a verified QA account email.
 - Team page heading rendered: `Group 01 - Microsoft - AI-Powered Cybersecurity App`.
 - Five team member cards rendered:
   - Spencer Keeghan - Project Manager
@@ -45,8 +45,8 @@ Completed:
 
 Pending:
 
-- Invalid login tested.
-- Direct Team page access without login tested and confirmed redirect.
+- Invalid login still needs final confirmation.
+- Direct Team page access without login still needs final confirmation.
 
 Current bug log:
 
