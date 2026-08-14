@@ -20,9 +20,8 @@ const roster: TeamMember[] = [
     id: 'rayan-hameed',
     name: 'Rayan Hameed',
     role: 'Business Analyst',
-    // TODO: replace with Rayan's own blurb once posted in the team channel
     blurb:
-      'Turns client conversations into written requirements the team can build against, and chases down the open decisions before they become blockers.',
+      'Final-year IT student with a strong interest in cloud, cybersecurity and AI. Outside of uni, I enjoy reading and experimenting with Linux.',
   },
   {
     id: 'haley-wong',
