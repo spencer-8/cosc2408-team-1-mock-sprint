@@ -11,6 +11,7 @@ export const TEAM_TAGLINE = 'Meet the people working on the project.'
 const roster: TeamMember[] = [
   {
     id: 'spencer-keeghan',
+    photoUrl: '/team/spencer-keeghan.jpg',
     name: 'Spencer Keeghan',
     role: 'Project Manager',
     blurb:
@@ -18,6 +19,7 @@ const roster: TeamMember[] = [
   },
   {
     id: 'rayan-hameed',
+    photoUrl: '/team/rayan-hameed.jpg',
     name: 'Rayan Hameed',
     role: 'Business Analyst',
     blurb:
@@ -33,6 +35,7 @@ const roster: TeamMember[] = [
   },
   {
     id: 'manthan-punjabi',
+    photoUrl: '/team/manthan-punjabi.jpg',
     name: 'Manthan Punjabi',
     role: 'Developer 1',
     blurb:
@@ -40,6 +43,7 @@ const roster: TeamMember[] = [
   },
   {
     id: 'jiong-ruan',
+    photoUrl: '/team/jiong-ruan.jpg',
     name: 'Jiong Ruan',
     role: 'Developer 2',
     blurb:
