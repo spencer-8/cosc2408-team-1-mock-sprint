@@ -27,11 +27,11 @@ const roster: TeamMember[] = [
   },
   {
     id: 'haley-wong',
+    photoUrl: '/team/haley-wong.jpeg',
     name: 'Haley Wong',
     role: 'UX Designer',
-    // TODO: replace with Haley's own blurb once posted in the team channel
     blurb:
-      'Designs the interface in Figma against the Microsoft Fluent 2 design language, covering layout, states and the visual direction the build follows.',
+      'Final-year IT student with experience in IoT development and network & server admin. The Android L & Material Design launch blew me away, and I have been keeping tabs on design frameworks since.',
   },
   {
     id: 'manthan-punjabi',
