@@ -1,3 +1,5 @@
+[Open the deployed Team 1 mock sprint site](https://cosc2408-team-1-mock-sprint.vercel.app)
+
 # Garage Boilerplate
 
 > Streamlined Next.js + Firebase monorepo for student capstone projects — batteries included, beginner friendly, free-tier only.
